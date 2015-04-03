@@ -6,16 +6,16 @@ lazy val root = (project in file(".")).
     scalaVersion := "2.11.6",
 
     name := "covariance-and-contravariance-examples",
-	
-	crossPaths := false,
+
+    crossPaths := false,
 
     libraryDependencies ++= Seq(
       "org.scalatest" %% "scalatest" % "2.2.4" % Test,
       "org.scalacheck" %% "scalacheck" % "1.12.2" % Test,
-	  "com.novocode" % "junit-interface" % "0.11" % Test
+      "com.novocode" % "junit-interface" % "0.11" % Test
     ),
-	
-	testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v"),
+
+    testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v"),
 
     libraryDependencies ++= Seq(
       "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",

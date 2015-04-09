@@ -9,7 +9,9 @@ public class CovariantArrayExample {
 	public void covariantArraysLeadToRuntimeExceptions() {
 		String[] c1 = { "abc" };
 		Object[] c2 = c1;
-		// OOPS! Below lone throws a runtime exception. ArrayStoreException
+		// OOPS! Line below throws a runtime exception: ArrayStoreException
+		// Reason is, that c2 is actually an instance of String array, and
+		// we try to update it with an Integer.
 		c2[0] = 1;
 	}
 

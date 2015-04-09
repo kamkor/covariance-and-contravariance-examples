@@ -1,8 +1,8 @@
 package kamkor.covariance
 
-import kamkor.UnitSpec
+import kamkor.UnitSuite
 
-class MutableCellExample extends UnitSpec {
+class MutableCellExample extends UnitSuite {
 
   // From Programming in Scala:
   //

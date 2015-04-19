@@ -66,6 +66,7 @@ class CovarianceIntroductionSuite extends UnitSuite {
     // install(new VendingMachine[Drink])
   }
 
+  /*
   test("You can't directly use covariant type parameter as a type of a method argument") {
     fail("todo")
   }
@@ -80,6 +81,6 @@ class CovarianceIntroductionSuite extends UnitSuite {
 
   test("You can use covariant type parameter in a mutable field if you set scope of this field to private[this]") {
     fail("todo")
-  }
+  }*/
 
 }

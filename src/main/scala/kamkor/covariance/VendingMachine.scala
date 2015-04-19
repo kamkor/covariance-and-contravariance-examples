@@ -3,10 +3,10 @@ package kamkor.covariance
 object VendingMachine {
 
   /** Completely immutable vending machine. */
-  def immutable[A](items: List[A]): VendingMachine[A] = new ImmutableVendingMachine(items)
+  def immutable[A](items: List[A]): ImmutableVendingMachine[A] = new ImmutableVendingMachine(items)
 
   /** Returns a partly mutable vending machine. nextItem() mutates vendingMachine. */
-  def mutable[A](items: List[A]): VendingMachine[A] = new MutableVendingMachine(items)
+  def mutable[A](items: List[A]): MutableVendingMachine[A] = new MutableVendingMachine(items)
 
 }
 
@@ -38,7 +38,7 @@ trait VendingMachine[+A] {
 /**
  * Immutable Vending Machine.
  */
-private class ImmutableVendingMachine[+A](val currentItem: Option[A], items: List[A])
+class ImmutableVendingMachine[+A] (val currentItem: Option[A], items: List[A])
   extends VendingMachine[A] {
 
   def this(items: List[A]) = this(None, items)
@@ -59,11 +59,11 @@ private class ImmutableVendingMachine[+A](val currentItem: Option[A], items: Lis
 }
 
 /**
- * Mutable Vending Machine.
+ * Mutable Vending Machine:
  *
- * 1. It shows that you can use covariant type parameter in a mutable field
- * if you set scope of this field to private[this]. Let me explain with
- * quote from Programming In Scala:
+ * This implementation of vending machine shows that you can use covariant 
+ * type parameter in a mutable field if you set scope of this 
+ * field to private[this]. Let me explain with quote from Programming In Scala:
  *
  * Object private members can be accessed only from within the object in
  * which they are defined. It turns out that accesses to variables from the
@@ -74,10 +74,8 @@ private class ImmutableVendingMachine[+A](val currentItem: Option[A], items: Lis
  * object was defined with. For accesses to object private values, however,
  * this is impossible.
  *
- * 2. Also shows that if you use a lower bound for a type parameter, you can
- * use it as a type of a method argument.
  */
-private class MutableVendingMachine[+A](private[this] var items: List[A])
+class MutableVendingMachine[+A] (private[this] var items: List[A])
   extends VendingMachine[A] {
 
   private[this] var _current: Option[A] = None

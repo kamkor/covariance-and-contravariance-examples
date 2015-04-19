@@ -1,2 +1,2 @@
 # covariance-and-contravariance-examples
-Examples of covariance and contravariance usage in Scala and Java. Examples are defined in test source folders.
+Examples of covariance and contravariance usage in Scala and Java. Written for my blog post Covariance and Contravariance in Scala and Java.

@@ -3,10 +3,10 @@ package kamkor.covariance
 object VendingMachine {
 
   /** Completely immutable vending machine. */
-  def immutable[A](items: List[A]): VendingMachine[A] = new ImmutableVendingMachine[A](items)
+  def immutable[A](items: List[A]): VendingMachine[A] = new ImmutableVendingMachine(items)
 
   /** Returns a partly mutable vending machine. nextItem() mutates vendingMachine. */
-  def mutable[A](items: List[A]): VendingMachine[A] = new MutableVendingMachine[A](items)
+  def mutable[A](items: List[A]): VendingMachine[A] = new MutableVendingMachine(items)
 
 }
 
@@ -22,12 +22,15 @@ trait VendingMachine[+A] {
   /** Item currently in the slot. */
   def currentItem: Option[A]
 
-  /** Returns a vending machine with next item in the currentItem. */
+  /**
+   *  Returns a vending machine with next item in the currentItem or
+   *  with none if there are no items left.
+   */
   def nextItem(): VendingMachine[A]
 
   /* If you use a lower bound for a type parameter,
    * you can use it as a type of a method argument. */
-  /** Returns a new instance of ImmutableVendingMachine with added items. */
+  /** Returns a new instance of vending machine with added items. */
   def addAll[B >: A](newItems: List[B]): VendingMachine[B]
 
 }
@@ -41,25 +44,14 @@ private class ImmutableVendingMachine[+A](val currentItem: Option[A], items: Lis
   def this(items: List[A]) = this(None, items)
 
   /**
-   * Returns a new ImmutableVendingMachine instance with next item in the current slot
-   * or the same instance if there were no more items left.
+   * Returns a new vending machine instance with next item in the current slot
+   * or with none if there are no items left.
    */
   def nextItem: ImmutableVendingMachine[A] = items match {
     case Nil     => if (currentItem.isDefined) new ImmutableVendingMachine(None, Nil) else this
     case t :: ts => new ImmutableVendingMachine(Some(t), ts)
   }
-  /*
-    if (items.size > 1) {
-      new ImmutableVendingMachine(items.headOption, items.tail)
-    } else if (items.size == 1) {
-      new ImmutableVendingMachine(items.headOption, Nil)
-    } else if (currentItem.isDefined && items.isEmpty) {
-      new ImmutableVendingMachine(None, Nil)
-    } else {
-      this
-    }*/
 
-  /** Returns a new instance of ImmutableVendingMachine with added items. */
   def addAll[B >: A](newItems: List[B]): ImmutableVendingMachine[B] = {
     new ImmutableVendingMachine(items ++ newItems)
   }
@@ -94,9 +86,8 @@ private class MutableVendingMachine[+A](private[this] var items: List[A])
   def currentItem: Option[A] = _current
 
   /**
-   * Drops next item to the slot.
-   *
-   * @return true if item was dropped or false if there are no items left.
+   * Returns current vending machine instance with next item in the current slot
+   * or with none if there are no items left.
    */
   def nextItem(): MutableVendingMachine[A] = {
     items match {
@@ -111,11 +102,8 @@ private class MutableVendingMachine[+A](private[this] var items: List[A])
     this
   }
 
-  /** Returns a new instance of MutableVendingMachine with added items. */
   def addAll[B >: A](newItems: List[B]): MutableVendingMachine[B] = {
     new MutableVendingMachine(items ++ newItems)
   }
 
 }
-
-

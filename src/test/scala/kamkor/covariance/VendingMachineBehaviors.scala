@@ -9,7 +9,7 @@ import kamkor.DrinksModel.Drink
 trait VendingMachineBehaviors { this: WordSpec with Matchers with OptionValues with Inside with Inspectors =>
 
   def vendingMachine(newVM: List[Cola] => VendingMachine[Drink]) {
-    "return a new instance of VendingMachine with added elements" in {
+    "return instance of VendingMachine with added elements" in {
       val colas = List(new Cola, new Cola)
 
       // Instance with first Cola

@@ -1,4 +1,4 @@
-package kamkor.covariance
+package kamkor.contravariance
 
 object GarbageCan {
 

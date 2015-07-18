@@ -1,4 +1,4 @@
-package kamkor
+package kamkor.covariance.vendingmachine
 
 object DrinksModel {
 

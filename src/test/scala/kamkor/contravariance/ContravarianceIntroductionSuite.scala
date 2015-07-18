@@ -1,6 +1,6 @@
 package kamkor.covariance
 
-import kamkor.DrinksModel._
+import kamkor.contravariance.garbagecan.TrashModel._
 import kamkor.UnitSuite
 
 class ContravarianceIntroductionSuite extends UnitSuite {
@@ -16,14 +16,13 @@ class ContravarianceIntroductionSuite extends UnitSuite {
     /**
      * FIXME
      */
-    def install(softDrinkVM: GarbageCan[Cola]): Unit = {
+    def install(plasticBottleGC: GarbageCan[PlasticBottle]): Unit = {
       // Installs the soft drink garbage can
     }
 
     // contravariant subtyping
-    install(new GarbageCan[Cola])
-    install(new GarbageCan[SoftDrink])
-    install(new GarbageCan[Drink])    
+    install(new GarbageCan[Plastic])
+    install(new GarbageCan[Trash])        
 
     // Compile error ! covariant subtyping
     //install(new VendingMachine[TonicWater])
@@ -47,18 +46,16 @@ class ContravarianceIntroductionSuite extends UnitSuite {
     /**
      * FIXME
      */
-    def install(vendingMachine: GarbageCan[_ >: Cola]): Unit = {
+    def install(plasticGC: GarbageCan[_ >: Plastic]): Unit = {
       // Installs soft drink vending machine
     }
 
     // contravariant subtyping
-    install(new GarbageCan[Cola])
-    install(new GarbageCan[SoftDrink])
-    install(new GarbageCan[Drink])
+    install(new GarbageCan[Plastic])
+    install(new GarbageCan[Trash])
 
     // Compile error ! covariant subtyping
-    //install(new VendingMachine[TonicWater])
-    //install(new VendingMachine[AppleJuice])
+    //install(new VendingMachine[PlasticBottle])
   }
 
 }

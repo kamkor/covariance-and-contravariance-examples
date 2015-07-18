@@ -1,26 +1,27 @@
 package kamkor.contravariance
 
 import kamkor.UnitSpec
-import kamkor.DrinksModel._
+import kamkor.contravariance.garbagecan.GarbageCan
+import kamkor.contravariance.garbagecan.TrashModel._
 
 class GarbageCanSpec extends UnitSpec {
 
   "A GarbageCan" should {
 
-    "accept items of type the same as garbage can type parameter" in {
-      val juiceGC: GarbageCan[Juice] = GarbageCan()
+    "accept items of type the same as GarbageCan type parameter" in {
+      val plasticGC: GarbageCan[Plastic] = GarbageCan()
       // should compile
-      val juice: Juice = new AppleJuice()
-      juiceGC.put(juice)
-      juiceGC.putAll(List(juice))
+      val plastic: Plastic = new PlasticBottle()
+      plasticGC.put(plastic)
+      plasticGC.putAll(List(plastic))
     }
 
     "accept items of type that is a childtype of garbage can type parameter" in {
-      val juiceGC: GarbageCan[Juice] = GarbageCan()
-      juiceGC.put(new AppleJuice())
-      //code below wont compile      
-      //val drink: Drink = new Cola()
-      //juiceGC.put(drink)
+      val plasticGC: GarbageCan[Plastic] = GarbageCan()
+      // should compile
+      val plasticBottle: PlasticBottle = new PlasticBottle()
+      plasticGC.put(plasticBottle)
+      plasticGC.putAll(List(plasticBottle))
     }
 
   }

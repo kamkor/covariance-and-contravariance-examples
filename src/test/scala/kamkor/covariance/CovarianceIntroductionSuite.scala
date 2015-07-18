@@ -1,8 +1,6 @@
 package kamkor.covariance
 
-import kamkor.DrinksModel.Cola
-import kamkor.DrinksModel.SoftDrink
-import kamkor.DrinksModel.TonicWater
+import kamkor.covariance.vendingmachine.DrinksModel._
 import kamkor.UnitSuite
 
 class CovarianceIntroductionSuite extends UnitSuite {

@@ -23,13 +23,13 @@ trait VendingMachine[+A] {
    *  Returns a vending machine with next item in the currentItem or
    *  with none if there are no items left.
    */
-  def nextItem(): VendingMachine[A]
+  def dispenseNext(): VendingMachine[A]
 
   /* If you use a lower bound for a type parameter,
    * you can use it as a type of a method argument. */
   /** Returns a vending machine with added items. */
   def addAll[B >: A](newItems: List[B]): VendingMachine[B]
-
+  
 }
 
 /**
@@ -40,7 +40,7 @@ private class DefaultVendingMachine[+A](val currentItem: Option[A], items: List[
 
   def this(items: List[A]) = this(None, items)
 
-  def nextItem: DefaultVendingMachine[A] = items match {
+  def dispenseNext: DefaultVendingMachine[A] = items match {
     case Nil     => if (currentItem.isDefined) new DefaultVendingMachine(None, Nil) else this
     case t :: ts => new DefaultVendingMachine(Some(t), ts)
   }

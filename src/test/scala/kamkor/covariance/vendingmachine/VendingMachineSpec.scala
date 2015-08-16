@@ -42,12 +42,12 @@ class VendingMachineSpec extends UnitSpec {
   final def shouldGiveAllDrinks(vm: VendingMachine[Drink], drinks: List[Drink]): Unit = {
     val vmWithoutNextItems =
       drinks.foldLeft(vm) { (vm, drink) =>
-        val vmWithNextItem = vm.nextItem()
+        val vmWithNextItem = vm.dispenseNext()
         vmWithNextItem.currentItem.value shouldBe theSameInstanceAs(drink)
         vmWithNextItem
       }
 
-    vmWithoutNextItems.nextItem().currentItem shouldBe None
+    vmWithoutNextItems.dispenseNext().currentItem shouldBe None
   }
 
 }

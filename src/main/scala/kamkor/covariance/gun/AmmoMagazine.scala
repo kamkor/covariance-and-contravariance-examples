@@ -19,9 +19,9 @@ object AmmoMagazine {
  * of private[this] scope. If you remove [this], code below will not
  * compile.
  */
-class AmmoMagazine[+A <: Bullet](private[this] var bullets: List[A]) {
+final class AmmoMagazine[+A <: Bullet](private[this] var bullets: List[A]) {
 
-  def isEmpty: Boolean = bullets.isEmpty
+  def hasBullets: Boolean = !bullets.isEmpty
 
   def giveNextBullet: Option[A] =
     bullets match {

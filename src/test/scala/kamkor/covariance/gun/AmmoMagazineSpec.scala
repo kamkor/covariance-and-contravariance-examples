@@ -7,24 +7,24 @@ import kamkor.covariance.gun.AmmoMagazine
 class AmmoMagazineSpec extends UnitSpec {
 
   "A AmmoMagazine" when {
-
-    "empty" should {
-      "not give bullets" in {
+    "has no bullets" should {
+      "not return bullets" in {
         val ammoMag = new AmmoMagazine(List.empty)
-        ammoMag.isEmpty shouldBe true
+
+        ammoMag.hasBullets shouldBe false
         ammoMag.giveNextBullet.isDefined shouldBe false
       }
     }
 
-    "not empty" should {
-      "give bullets" in {
+    "has bullets" should {
+      "return bullets until there are no left" in {
         val bullets = List.range(0, 10) map (i => new NormalBullet)
         val ammoMag = new AmmoMagazine(bullets)
-        for (_ <- 0 until 10) {
-          ammoMag.isEmpty shouldBe false
+
+        ammoMag.hasBullets shouldBe true
+        while (ammoMag.hasBullets) {
           ammoMag.giveNextBullet.isDefined shouldBe true
         }
-        ammoMag.isEmpty shouldBe true
         ammoMag.giveNextBullet.isDefined shouldBe false
       }
     }

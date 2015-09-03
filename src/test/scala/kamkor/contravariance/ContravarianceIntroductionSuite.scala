@@ -63,7 +63,7 @@ class ContravarianceIntroductionSuite extends UnitSuite {
     installPaperGarbageCan(new GarbageCan[Paper])
 
     // Compile error ! covariant subtyping
-    //installPaperGarbageCan(new GarbageCan[Newspaper])
+    //installPlasticGarbageCan(new GarbageCan[PlasticBottle])
   }
 
 }

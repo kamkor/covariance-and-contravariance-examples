@@ -6,56 +6,64 @@ import kamkor.UnitSuite
 class ContravarianceIntroductionSuite extends UnitSuite {
 
   test("Contravariant subtyping using declaration-site variance") {
+
     /**
-     * FIXME
+     * Prefixing a formal type parameter with a - indicates that subtyping
+     * is contravariant in that parameter. Alternatively, we can say that class
+     * GarbageCan is contravariant in its type parameter A.
      */
     class GarbageCan[-A] {
       // .. don't worry about implementation yet
     }
 
     /**
-     * FIXME
+     * Accepts a Garbage Can of type Plastic or supertypes of Plastic.
      */
-    def install(plasticBottleGC: GarbageCan[PlasticBottle]): Unit = {
-      // Installs the soft drink garbage can
+    def installPlasticGarbageCan(gc: GarbageCan[Plastic]): Unit = {
+      // Installs garbage can for plastic trash
+    }
+
+    /**
+     * Accepts a Garbage Can of type Paper or supertypes of Paper.
+     */
+    def installPaperGarbageCan(gc: GarbageCan[Paper]): Unit = {
+      // Installs garbage can for paper trash
     }
 
     // contravariant subtyping
-    install(new GarbageCan[Plastic])
-    install(new GarbageCan[Trash])        
+    installPlasticGarbageCan(new GarbageCan[Trash])
+    installPaperGarbageCan(new GarbageCan[Trash])
+
+    // invariant
+    installPaperGarbageCan(new GarbageCan[Paper])
 
     // Compile error ! covariant subtyping
-    //install(new VendingMachine[TonicWater])
-    //install(new VendingMachine[AppleJuice])
-
-    /*  To sum up:
-     *   
-     *                 A  >:                B
-     *  VendingMachine[B] <: VendingMachine[A]
-     *  
-     *  FIXME  
-     */
+    //installPaperGarbageCan(new GarbageCan[Newspaper])
   }
 
   test("Contravariant subtyping using use-site variance") {
     class GarbageCan[A] {
-      // Vending Machine is invariant in type parameter A, so
+      // Garbage Can is invariant in type parameter A, so
       // you can use that type parameter however you want.
     }
 
-    /**
-     * FIXME
-     */
-    def install(plasticGC: GarbageCan[_ >: Plastic]): Unit = {
-      // Installs soft drink vending machine
+    def installPlasticGarbageCan(gc: GarbageCan[_ >: Plastic]): Unit = {
+      // Installs garbage can for plastic trash
+    }
+
+    def installPaperGarbageCan(gc: GarbageCan[_ >: Paper]): Unit = {
+      // Installs garbage can for paper trash
     }
 
     // contravariant subtyping
-    install(new GarbageCan[Plastic])
-    install(new GarbageCan[Trash])
+    installPlasticGarbageCan(new GarbageCan[Trash])
+    installPaperGarbageCan(new GarbageCan[Trash])
+
+    // invariant
+    installPaperGarbageCan(new GarbageCan[Paper])
 
     // Compile error ! covariant subtyping
-    //install(new VendingMachine[PlasticBottle])
+    //installPaperGarbageCan(new GarbageCan[Newspaper])
   }
 
 }

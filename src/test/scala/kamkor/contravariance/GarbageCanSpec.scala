@@ -23,6 +23,16 @@ class GarbageCanSpec extends UnitSpec {
       plasticGC.put(plasticBottle)
       plasticGC.putAll(List(plasticBottle))
     }
+    
+    "lets have fun" in {
+      val trashGC: GarbageCan[Trash] = GarbageCan()
+      var plasticBottleGC: GarbageCan[PlasticBottle] = GarbageCan()
+      
+      trashGC.put(new Trash)
+      trashGC.put(new Newspaper)
+      
+      plasticBottleGC = trashGC
+    }
 
   }
 

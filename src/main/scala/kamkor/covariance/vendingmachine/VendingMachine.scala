@@ -2,7 +2,7 @@ package kamkor.covariance.vendingmachine
 
 object VendingMachine {
 
-  /** Completely immutable vending machine. */
+  /** Creates default implementation of VendingMachine. */
   def apply[A](items: List[A]): VendingMachine[A] = new DefaultVendingMachine(items)
 
 }

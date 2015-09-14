@@ -2,12 +2,12 @@ package kamkor.contravariance.garbagecan
 
 object TrashModel {
   
-  class Trash
+  class Item
   
-  class Plastic extends Trash
-  class PlasticBottle extends Plastic
+  class PlasticItem extends Item
+  class PlasticBottle extends PlasticItem
   
-  class Paper extends Trash
-  class Newspaper extends Paper
+  class PaperItem extends Item
+  class Newspaper extends PaperItem
 
 }

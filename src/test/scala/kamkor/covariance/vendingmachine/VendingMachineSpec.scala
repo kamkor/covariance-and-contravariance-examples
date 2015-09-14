@@ -8,7 +8,7 @@ class VendingMachineSpec extends UnitSpec {
   "A VendingMachine" should {
     "return all colas passed to its constructor method" in {
       val colas = List(new Cola, new Cola)
-      val colaVM: VendingMachine[Drink] = VendingMachine(colas)
+      val colaVM: VendingMachine[Cola] = VendingMachine(colas)
       shouldGiveAllDrinks(colaVM, colas)
     }
 

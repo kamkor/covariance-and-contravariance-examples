@@ -1,7 +1,5 @@
 package kamkor.contravariance.garbagecan
 
-import kamkor.contravariance.garbagecan.TrashModel.Paper
-
 object GarbageCan {
 
   def apply[A](): GarbageCan[A] = new DefaultGarbageCan
@@ -28,7 +26,7 @@ trait GarbageCan[-A] {
 
 }
 
-private class DefaultGarbageCan[-A] extends GarbageCan[A] {
+private class DefaultGarbageCan[-A]() extends GarbageCan[A] {
   
   // below compiles if upper bound is used. items can be put into this list
   //type B >: A

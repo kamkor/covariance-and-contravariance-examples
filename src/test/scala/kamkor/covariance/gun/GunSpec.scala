@@ -8,8 +8,8 @@ import kamkor.covariance.gun.Gun
 class GunSpec extends UnitSpec {
 
   "A Gun" should {
-    "accept AmmoMagazine of any subtype of Bullet" in {
-      // should compile, covariant subtyping
+    "accept AmmoMagazine of any subtype of Bullet" in {      
+      // should compile, covariant subtyping      
       val gun = new Gun(AmmoMagazine.newNormalBulletsMag)
       gun.reload(AmmoMagazine.newExplosiveBulletsMag)
     }

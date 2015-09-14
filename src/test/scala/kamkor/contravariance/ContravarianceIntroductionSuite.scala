@@ -17,25 +17,17 @@ class ContravarianceIntroductionSuite extends UnitSuite {
     }
 
     /**
-     * Accepts a Garbage Can of type Plastic or supertypes of Plastic.
+     * Accepts a Garbage Can of type PlasticItemItem or supertypes of PlasticItemItem.
      */
-    def installPlasticGarbageCan(gc: GarbageCan[Plastic]): Unit = {
-      // Installs garbage can for plastic trash
-    }
-
-    /**
-     * Accepts a Garbage Can of type Paper or supertypes of Paper.
-     */
-    def installPaperGarbageCan(gc: GarbageCan[Paper]): Unit = {
-      // Installs garbage can for paper trash
+    def install(PlasticItemItemsGC: GarbageCan[PlasticItem]): Unit = {
+      // Installs garbage can for PlasticItem trash
     }
 
     // contravariant subtyping
-    installPlasticGarbageCan(new GarbageCan[Trash])
-    installPaperGarbageCan(new GarbageCan[Trash])
+    install(new GarbageCan[Item])
 
     // invariant
-    installPaperGarbageCan(new GarbageCan[Paper])
+    install(new GarbageCan[PlasticItem])
 
     // Compile error ! covariant subtyping
     //installPaperGarbageCan(new GarbageCan[Newspaper])
@@ -47,23 +39,18 @@ class ContravarianceIntroductionSuite extends UnitSuite {
       // you can use that type parameter however you want.
     }
 
-    def installPlasticGarbageCan(gc: GarbageCan[_ >: Plastic]): Unit = {
-      // Installs garbage can for plastic trash
-    }
-
-    def installPaperGarbageCan(gc: GarbageCan[_ >: Paper]): Unit = {
-      // Installs garbage can for paper trash
+    def install(gc: GarbageCan[_ >: PlasticItem]): Unit = {
+      // Installs garbage can for PlasticItem trash
     }
 
     // contravariant subtyping
-    installPlasticGarbageCan(new GarbageCan[Trash])
-    installPaperGarbageCan(new GarbageCan[Trash])
+    install(new GarbageCan[Item])
 
     // invariant
-    installPaperGarbageCan(new GarbageCan[Paper])
+    install(new GarbageCan[PlasticItem])
 
     // Compile error ! covariant subtyping
-    //installPlasticGarbageCan(new GarbageCan[PlasticBottle])
+    //installPlasticItemGarbageCan(new GarbageCan[PlasticBottle])
   }
 
 }

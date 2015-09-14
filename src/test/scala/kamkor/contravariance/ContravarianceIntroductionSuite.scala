@@ -30,7 +30,7 @@ class ContravarianceIntroductionSuite extends UnitSuite {
     install(new GarbageCan[PlasticItem])
 
     // Compile error ! covariant subtyping
-    //installPaperGarbageCan(new GarbageCan[Newspaper])
+    //installPaperGarbageCan(new GarbageCan[PlasticBottle])
   }
 
   test("Contravariant subtyping using use-site variance") {

@@ -19,7 +19,7 @@ class ContravarianceIntroductionSuite extends UnitSuite {
     /**
      * Accepts a Garbage Can of type PlasticItemItem or supertypes of PlasticItemItem.
      */
-    def install(PlasticItemItemsGC: GarbageCan[PlasticItem]): Unit = {
+    def install(plasticItemsGC: GarbageCan[PlasticItem]): Unit = {
       // Installs garbage can for PlasticItem trash
     }
 
@@ -39,7 +39,7 @@ class ContravarianceIntroductionSuite extends UnitSuite {
       // you can use that type parameter however you want.
     }
 
-    def install(gc: GarbageCan[_ >: PlasticItem]): Unit = {
+    def install(plasticItemsGC: GarbageCan[_ >: PlasticItem]): Unit = {
       // Installs garbage can for PlasticItem trash
     }
 

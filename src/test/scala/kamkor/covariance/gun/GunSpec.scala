@@ -22,7 +22,7 @@ class GunSpec extends UnitSpec {
       "not succeed" in {
         val gun = new Gun(emptyAmmoMag)
 
-        gun.hasAmmo() shouldBe false
+        gun.hasAmmo shouldBe false
         gun.shoot().isDefined shouldBe false
       }
     }
@@ -32,8 +32,8 @@ class GunSpec extends UnitSpec {
         val gun = new Gun(emptyAmmoMag)
         gun.reload(AmmoMagazine.newExplosiveBulletsMag)
 
-        gun.hasAmmo() shouldBe true
-        while (gun.hasAmmo()) {
+        gun.hasAmmo shouldBe true
+        while (gun.hasAmmo) {
           gun.shoot().isDefined shouldBe true
         }
         gun.shoot().isDefined shouldBe false

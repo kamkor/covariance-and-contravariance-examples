@@ -12,7 +12,7 @@ class AmmoMagazineSpec extends UnitSpec {
         val ammoMag = new AmmoMagazine(List.empty)
 
         ammoMag.hasBullets shouldBe false
-        ammoMag.giveNextBullet.isDefined shouldBe false
+        ammoMag.giveNextBullet().isDefined shouldBe false
       }
     }
 
@@ -23,9 +23,9 @@ class AmmoMagazineSpec extends UnitSpec {
 
         ammoMag.hasBullets shouldBe true
         while (ammoMag.hasBullets) {
-          ammoMag.giveNextBullet.isDefined shouldBe true
+          ammoMag.giveNextBullet().isDefined shouldBe true
         }
-        ammoMag.giveNextBullet.isDefined shouldBe false
+        ammoMag.giveNextBullet().isDefined shouldBe false
       }
     }
 

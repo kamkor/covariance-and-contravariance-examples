@@ -23,7 +23,7 @@ final class AmmoMagazine[+A <: Bullet](private[this] var bullets: List[A]) {
 
   def hasBullets: Boolean = !bullets.isEmpty
 
-  def giveNextBullet: Option[A] =
+  def giveNextBullet(): Option[A] =
     bullets match {
       case Nil => {
         None

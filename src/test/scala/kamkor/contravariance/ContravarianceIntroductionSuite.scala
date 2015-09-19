@@ -19,18 +19,18 @@ class ContravarianceIntroductionSuite extends UnitSuite {
     /**
      * Accepts a Garbage Can of type PlasticItemItem or supertypes of PlasticItemItem.
      */
-    def install(plasticItemsGC: GarbageCan[PlasticItem]): Unit = {
+    def setGarbageCanForPlastic(plasticItemsGC: GarbageCan[PlasticItem]): Unit = {
       // Installs garbage can for PlasticItem trash
     }
 
     // contravariant subtyping
-    install(new GarbageCan[Item])
+    setGarbageCanForPlastic(new GarbageCan[Item])
 
     // invariant
-    install(new GarbageCan[PlasticItem])
+    setGarbageCanForPlastic(new GarbageCan[PlasticItem])
 
     // Compile error ! covariant subtyping
-    //installPaperGarbageCan(new GarbageCan[PlasticBottle])
+    //setGarbageCanForPlastic(new GarbageCan[PlasticBottle])
   }
 
   test("Contravariant subtyping using use-site variance") {
@@ -39,18 +39,18 @@ class ContravarianceIntroductionSuite extends UnitSuite {
       // you can use that type parameter however you want.
     }
 
-    def install(plasticItemsGC: GarbageCan[_ >: PlasticItem]): Unit = {
+    def setGarbageCanForPlastic(plasticItemsGC: GarbageCan[_ >: PlasticItem]): Unit = {
       // Installs garbage can for PlasticItem trash
     }
 
     // contravariant subtyping
-    install(new GarbageCan[Item])
+    setGarbageCanForPlastic(new GarbageCan[Item])
 
     // invariant
-    install(new GarbageCan[PlasticItem])
+    setGarbageCanForPlastic(new GarbageCan[PlasticItem])
 
     // Compile error ! covariant subtyping
-    //installPlasticItemGarbageCan(new GarbageCan[PlasticBottle])
+    //setGarbageCanForPlastic(new GarbageCan[PlasticBottle])
   }
 
 }

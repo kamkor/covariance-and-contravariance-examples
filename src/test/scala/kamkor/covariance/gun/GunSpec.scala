@@ -1,9 +1,7 @@
-package kamkor.covariance.vendingmachine
+package kamkor.covariance.gun
 
 import kamkor.UnitSpec
 import kamkor.covariance.gun.BulletsModel._
-import kamkor.covariance.gun.AmmoMagazine
-import kamkor.covariance.gun.Gun
 
 class GunSpec extends UnitSpec {
 

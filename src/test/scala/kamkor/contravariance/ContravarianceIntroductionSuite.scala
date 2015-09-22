@@ -1,4 +1,4 @@
-package kamkor.covariance
+package kamkor.contravariance
 
 import kamkor.contravariance.garbagecan.TrashModel._
 import kamkor.UnitSuite

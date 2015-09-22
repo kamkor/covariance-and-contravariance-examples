@@ -1,7 +1,6 @@
-package kamkor.contravariance
+package kamkor.contravariance.garbagecan
 
 import kamkor.UnitSpec
-import kamkor.contravariance.garbagecan.GarbageCan
 import kamkor.contravariance.garbagecan.TrashModel._
 
 class GarbageCanSpec extends UnitSpec {

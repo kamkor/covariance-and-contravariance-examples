@@ -10,8 +10,8 @@ object GarbageCan {
  * GarbageCan that is contravariant in its type parameter.
  *
  * Contravariant subtyping:
- *                A  <:                B
- * VendingMachine[B] <: VendingMachine[A]
+ *            A  <:            B
+ * GarbageCan[B] <: GarbageCan[A]
  */
 trait GarbageCan[-A] {
 
@@ -22,20 +22,20 @@ trait GarbageCan[-A] {
   def putAll(items: List[A]): Unit
 
   /** Returns current number of items in the garbage can */
-  val itemsCount: Int
+  def itemsCount: Int
 
 }
 
 private class DefaultGarbageCan[-A]() extends GarbageCan[A] {
-  
-  // below compiles if upper bound is used. items can be put into this list
+
+  // below compiles if lower bound is used. items can be put into this list
   //type B >: A
   //private var items: List[B] = _ 
-  
-  private var _itemsCount: Int = _
-  val itemsCount: Int = _itemsCount
 
-  def put(item: A): Unit = {    
+  private var _itemsCount: Int = _
+  def itemsCount: Int = _itemsCount
+
+  def put(item: A): Unit = {
     _itemsCount += 1
     println(s"putting ${item.getClass().getSimpleName} to trash")
   }

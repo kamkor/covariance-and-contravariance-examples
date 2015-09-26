@@ -10,17 +10,19 @@ class GarbageCanSpec extends UnitSpec {
     "accept items of type the same as GarbageCan type parameter" in {
       val plasticGC: GarbageCan[PlasticItem] = GarbageCan()
       // should compile
-      val plastic: PlasticItem = new PlasticBottle()
-      plasticGC.put(plastic)
-      plasticGC.putAll(List(plastic))
+      plasticGC.put(new PlasticBottle())
+      plasticGC.putAll(List(new PlasticBottle()))
+
+      plasticGC.itemsCount shouldBe 2
     }
 
     "accept items of type that is a childtype of garbage can type parameter" in {
       val plasticGC: GarbageCan[PlasticItem] = GarbageCan()
-      // should compile
-      val plasticBottle: PlasticBottle = new PlasticBottle()
-      plasticGC.put(plasticBottle)
-      plasticGC.putAll(List(plasticBottle))
+      // should compile      
+      plasticGC.put(new PlasticBottle())
+      plasticGC.putAll(List(new PlasticBottle()))
+
+      plasticGC.itemsCount shouldBe 2
     }
 
   }

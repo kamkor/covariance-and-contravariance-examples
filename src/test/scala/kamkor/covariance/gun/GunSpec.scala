@@ -14,7 +14,7 @@ class GunSpec extends UnitSpec {
   }
 
   "A Gun with no ammo" when {
-    val emptyAmmoMag = new AmmoMagazine(List.empty)
+    val emptyAmmoMag = AmmoMagazine.empty
 
     "attempting to shoot" should {
       "not succeed" in {

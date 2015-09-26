@@ -3,15 +3,19 @@ package kamkor.covariance.gun
 import kamkor.covariance.gun.BulletsModel._
 
 object AmmoMagazine {
-  def newNormalBulletsMag: AmmoMagazine[NormalBullet] = {
+  
+  def empty[A <: Bullet]: AmmoMagazine[A] = AmmoMagazine.empty
+
+  def newNormalBulletsMag(): AmmoMagazine[NormalBullet] = {
     val bullets = List.range(0, 10) map (_ => new NormalBullet)
     new AmmoMagazine(bullets)
   }
 
-  def newExplosiveBulletsMag: AmmoMagazine[ExplosiveBullet] = {
+  def newExplosiveBulletsMag(): AmmoMagazine[ExplosiveBullet] = {
     val explosiveBullets = List.range(0, 10) map (_ => new ExplosiveBullet)
     new AmmoMagazine(explosiveBullets)
   }
+  
 }
 
 /*

@@ -4,7 +4,7 @@ import kamkor.covariance.gun.BulletsModel._
 
 object AmmoMagazine {
   
-  def empty[A <: Bullet]: AmmoMagazine[A] = AmmoMagazine.empty
+  def empty[A <: Bullet]: AmmoMagazine[A] = new AmmoMagazine(List.empty)
 
   def newNormalBulletsMag(): AmmoMagazine[NormalBullet] = {
     val bullets = List.range(0, 10) map (_ => new NormalBullet)

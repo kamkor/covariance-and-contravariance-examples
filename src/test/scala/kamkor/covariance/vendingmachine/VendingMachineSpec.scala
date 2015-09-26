@@ -33,7 +33,7 @@ class VendingMachineSpec extends UnitSpec {
     }
 
     "accept items of type that is a supertype of vending machine type parameter" in {
-      val colaVM: VendingMachine[Drink] = VendingMachine(List(new Cola))
+      val colaVM: VendingMachine[Cola] = VendingMachine(List(new Cola))
       // should compile, AppleJuice and Cola have common supertype - a Drink.
       val drinkVM: VendingMachine[Drink] = colaVM.addAll(List(new AppleJuice))
     }

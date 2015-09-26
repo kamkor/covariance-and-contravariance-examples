@@ -17,9 +17,8 @@ class AmmoMagazineSpec extends UnitSpec {
     }
 
     "has bullets" should {
-      "return bullets until there are no left" in {
-        val bullets = List.range(0, 10) map (_ => new NormalBullet)
-        val ammoMag = new AmmoMagazine(bullets)
+      "return bullets until there are no left" in {        
+        val ammoMag = AmmoMagazine.newNormalBulletsMag()
 
         ammoMag.hasBullets shouldBe true
         while (ammoMag.hasBullets) {

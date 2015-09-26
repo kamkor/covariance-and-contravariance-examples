@@ -31,17 +31,19 @@ private class DefaultGarbageCan[-A]() extends GarbageCan[A] {
   // below compiles if lower bound is used. items can be put into this list
   //type B >: A
   //private var items: List[B] = _ 
+  
+  // compiles because of object private scope
+  private[this] var items: List[A] = List.empty
 
-  private var _itemsCount: Int = _
-  def itemsCount: Int = _itemsCount
+  def itemsCount: Int = items.size
 
-  def put(item: A): Unit = {
-    _itemsCount += 1
+  def put(item: A): Unit = {    
+    this.items :+= item
     println(s"putting ${item.getClass().getSimpleName} to trash")
   }
 
   def putAll(items: List[A]): Unit = {
-    _itemsCount += items.size
+    this.items ++= items
     println(s"putting ${items.map(_.getClass().getSimpleName)} to trash")
   }
 

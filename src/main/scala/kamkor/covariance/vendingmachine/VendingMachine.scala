@@ -19,13 +19,15 @@ class VendingMachine[+A](val currentItem: Option[A], items: List[A]) {
    */
   def dispenseNext(): VendingMachine[A] =
     items match {
-      case Nil =>
+      case Nil => {
         if (currentItem.isDefined)
           new VendingMachine(None, Nil)
         else
           this
-      case t :: ts =>
+      }
+      case t :: ts => {
         new VendingMachine(Some(t), ts)
+      }
     }
 
   /* If you use a lower bound for a type parameter,

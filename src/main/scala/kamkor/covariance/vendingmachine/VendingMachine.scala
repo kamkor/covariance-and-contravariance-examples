@@ -1,12 +1,5 @@
 package kamkor.covariance.vendingmachine
 
-object VendingMachine {
-
-  /** Creates default implementation of VendingMachine. */
-  def apply[A](items: List[A]): VendingMachine[A] = new VendingMachine(items)
-
-}
-
 /**
  * VendingMachine that is covariant in its type parameter.
  *
@@ -27,9 +20,9 @@ class VendingMachine[+A](val currentItem: Option[A], items: List[A]) {
   def dispenseNext(): VendingMachine[A] =
     items match {
       case Nil =>
-        if (currentItem.isDefined) 
+        if (currentItem.isDefined)
           new VendingMachine(None, Nil)
-        else 
+        else
           this
       case t :: ts =>
         new VendingMachine(Some(t), ts)

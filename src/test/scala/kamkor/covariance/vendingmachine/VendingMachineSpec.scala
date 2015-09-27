@@ -8,7 +8,7 @@ class VendingMachineSpec extends UnitSpec {
   "A VendingMachine" should {
     "return all colas passed to its constructor method" in {
       val colas = List(new Cola, new Cola)
-      val colaVM: VendingMachine[Cola] = VendingMachine(colas)
+      val colaVM: VendingMachine[Cola] = new VendingMachine(colas)
       shouldGiveAllDrinks(colaVM, colas)
     }
 
@@ -18,22 +18,19 @@ class VendingMachineSpec extends UnitSpec {
       val addedTonicWaters = List(new TonicWater, new TonicWater, new TonicWater)
 
       val softDrinkVM: VendingMachine[SoftDrink] =
-        VendingMachine
-          .apply(initialColas)
-          .addAll(addedColas)
-          .addAll(addedTonicWaters)
+        new VendingMachine(initialColas).addAll(addedColas).addAll(addedTonicWaters)
 
       shouldGiveAllDrinks(softDrinkVM, initialColas ::: addedColas ::: addedTonicWaters)
     }
 
     "accept items of type the same as vending machine type parameter" in {
-      val colaVM: VendingMachine[Cola] = VendingMachine(List(new Cola))
+      val colaVM: VendingMachine[Cola] = new VendingMachine(List(new Cola))
       // should compile
       val anotherColaVM: VendingMachine[Cola] = colaVM.addAll(List(new Cola))
     }
 
     "accept items of type that is a supertype of vending machine type parameter" in {
-      val colaVM: VendingMachine[Cola] = VendingMachine(List(new Cola))
+      val colaVM: VendingMachine[Cola] = new VendingMachine(List(new Cola))
       // should compile, AppleJuice and Cola have common supertype - a Drink.
       val drinkVM: VendingMachine[Drink] = colaVM.addAll(List(new AppleJuice))
     }

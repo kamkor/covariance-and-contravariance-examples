@@ -3,7 +3,7 @@ package kamkor.covariance.vendingmachine
 object VendingMachine {
 
   /** Creates default implementation of VendingMachine. */
-  def apply[A](items: List[A]): VendingMachine[A] = new DefaultVendingMachine(items)
+  def apply[A](items: List[A]): VendingMachine[A] = new VendingMachine(items)
 
 }
 
@@ -13,40 +13,32 @@ object VendingMachine {
  * Covariant subtyping:
  *                A  <:                B
  * VendingMachine[A] <: VendingMachine[B]
+ *
+ * @param currentItem item currently in the slot
  */
-trait VendingMachine[+A] {
+class VendingMachine[+A](val currentItem: Option[A], items: List[A]) {
 
-  /** Item currently in the slot. */
-  def currentItem: Option[A]
+  def this(items: List[A]) = this(None, items)
 
   /**
    *  Returns a vending machine with next item in the currentItem or
    *  with none if there are no items left.
    */
-  def dispenseNext(): VendingMachine[A]
+  def dispenseNext(): VendingMachine[A] =
+    items match {
+      case Nil =>
+        if (currentItem.isDefined) 
+          new VendingMachine(None, Nil)
+        else 
+          this
+      case t :: ts =>
+        new VendingMachine(Some(t), ts)
+    }
 
   /* If you use a lower bound for a type parameter,
    * you can use it as a type of a method argument. */
   /** Returns a vending machine with added items. */
-  def addAll[B >: A](newItems: List[B]): VendingMachine[B]
-  
-}
-
-/**
- * Default Vending Machine implementation
- */
-private class DefaultVendingMachine[+A](val currentItem: Option[A], items: List[A])
-  extends VendingMachine[A] {
-
-  def this(items: List[A]) = this(None, items)
-
-  def dispenseNext: DefaultVendingMachine[A] = items match {
-    case Nil     => if (currentItem.isDefined) new DefaultVendingMachine(None, Nil) else this
-    case t :: ts => new DefaultVendingMachine(Some(t), ts)
-  }
-
-  def addAll[B >: A](newItems: List[B]): DefaultVendingMachine[B] = {
-    new DefaultVendingMachine(items ++ newItems)
-  }
+  def addAll[B >: A](newItems: List[B]): VendingMachine[B] =
+    new VendingMachine(items ++ newItems)
 
 }

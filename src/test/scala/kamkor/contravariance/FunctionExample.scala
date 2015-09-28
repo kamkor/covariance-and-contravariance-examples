@@ -1,4 +1,4 @@
-package kamkor.covariance
+package kamkor.contravariance
 
 import kamkor.UnitSuite
 import kamkor.covariance.vendingmachine.DrinksModel._

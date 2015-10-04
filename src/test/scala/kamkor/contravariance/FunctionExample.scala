@@ -8,8 +8,8 @@ class FunctionExample extends UnitSuite {
   trait MusicInstrument {
     val productionYear: Int
   }
-  case class Guitar(val productionYear: Int) extends MusicInstrument
-  case class Piano(val productionYear: Int) extends MusicInstrument
+  case class Guitar(productionYear: Int) extends MusicInstrument
+  case class Piano(productionYear: Int) extends MusicInstrument
 
   val isVintage: MusicInstrument => Boolean = _.productionYear < 1980
 

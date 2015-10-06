@@ -1,2 +1,2 @@
 # covariance-and-contravariance-examples
-Examples of covariance and contravariance usage in Scala and Java. Written for my blog post Covariance and Contravariance in Scala and Java.
+Examples from my blog post [Covariance and Contravariance in Scala](http://blog.kamkor.me/Covariance-And-Contravariance-In-Scala/).

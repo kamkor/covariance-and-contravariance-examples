@@ -22,8 +22,8 @@ object VendingMachineExamples extends App {
     def installVendingMachine(vm: VendingMachine[SoftDrink]): Unit = {}
   }
 
-  def subtyping: Unit = {
-    val cafeteria = new Cafeteria()
+  def covariantSubtyping: Unit = {
+    val cafeteria = new Cafeteria
 
     // covariant subtyping
     val colaVM: VendingMachine[Cola] = new VendingMachine(List(new Cola))
@@ -54,7 +54,7 @@ object VendingMachineExamples extends App {
     val softDrinkVM: VendingMachine[SoftDrink] = colaVM.addAll(tonics)
   }
 
-  subtyping
+  covariantSubtyping
   vendingMachineIsImmutable
   lowerBoundCanBePowerfull
 

@@ -7,7 +7,7 @@ class Publisher[A] {
   private var subscribers: List[Subscriber[A]] = List.empty
 
   def subscribe(subscriber: Subscriber[A]): Unit =  {
-    this.subscribers :+= subscriber
+    this.subscribers = subscriber :: subscribers
     println(s"total amount of subscribers is ${subscribers.size}")
   }
 

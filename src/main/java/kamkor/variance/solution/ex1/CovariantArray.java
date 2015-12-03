@@ -9,7 +9,7 @@
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with hybris.
  */
-package kamkor.variance.solutions.ex1;
+package kamkor.variance.solution.ex1;
 
 import java.util.ArrayList;
 import java.util.List;

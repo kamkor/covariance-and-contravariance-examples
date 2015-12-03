@@ -19,7 +19,8 @@ class VendingMachine[+A](val currentItem: Option[A], items: List[A]) {
   // return type is natural position of covariant type parameter
   // one of the exceptions is when you use other parametrized type, like VendingMachine, List etc. It compiles in only one case:
   // - ParametrizedType[+A] is OK
-  // - ParametrizedType[A] and ParametrizedType[-A] is NOT OK.
+  // - ParametrizedType[A]
+  // - ParametrizedType[-A] is NOT OK, and flipped classification happens for this case. Read more here: http://www.artima.com/pins1ed/type-parameterization.html
   def dispenseNext: VendingMachine[A] = items match {
     case Nil => if (currentItem.isDefined) new VendingMachine(None, Nil) else this
     case t :: ts => new VendingMachine(Some(t), ts)

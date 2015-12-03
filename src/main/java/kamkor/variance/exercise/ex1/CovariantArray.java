@@ -15,10 +15,8 @@ package kamkor.variance.exercise.ex1;
  * Write code that will make array throw runtime exception ArrayStoreException when modifying array:
  * arr[0] = "iamstring";
  */
-public class CovariantArray
-{
-	public static void main(String[] args)
-	{
+public class CovariantArray {
+	public static void main(String[] args) {
 
 	}
 }

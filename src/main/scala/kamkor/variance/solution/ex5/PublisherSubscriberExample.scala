@@ -37,9 +37,9 @@ class Subscriber[-A] {
 
 object PublisherSubscriberExample extends App {
 
-  val publisher: Publisher[Cola] = new Publisher[Cola];
+  val colaPublisher: Publisher[Cola] = new Publisher[Cola];
 
-  publisher.subscribe(new Subscriber[Cola])
+  colaPublisher.subscribe(new Subscriber[Cola])
 
   // But somewhere we already have cool subscriber of type Subscriber[SoftDrink]..
   // It would be cool if we could use it instead of implementing the new specific Subscriber[Cola]
@@ -47,5 +47,5 @@ object PublisherSubscriberExample extends App {
   // contravariant subtyping
   // Cola <: SoftDrink
   // Subscriber[SoftDrink] <: Subscriber[Cola]
-  publisher.subscribe(softDrinkSubscriber)
+  colaPublisher.subscribe(softDrinkSubscriber)
 }

@@ -20,7 +20,7 @@ package kamkor.variance.solution.ex3
 class GarbageCan[-A] {
 
   // when using object private scope, that is, private[this], we can use contravariant parameter in this field however we want.
-  // there are no restrictions. The same rule applies for covariant type parameter. Only this object can directly affect
+  // there are no restrictions. The same rule applies for covariant type parameter. Only 'this' object can directly affect
   // items field, so for Scala compiler, this is always safe.
   private[this] var items: List[A] = List.empty
 
@@ -31,7 +31,7 @@ class GarbageCan[-A] {
   // However, there are exceptions. Like when you use parametrized type like List:
   // - ParametrizedType[+A] is OK
   // - ParametrizedType[A] is NOT OK
-  // - ParametrizedType[-A] is NOT OK and additional flipped classification happens (read more about it here: http://www.artima.com/pins1ed/type-parameterization.html
+  // - ParametrizedType[-A] is NOT OK
   def putAll(newItems: List[A]): Unit = items = items ++ newItems
 
   def itemsCount: Int = items.size

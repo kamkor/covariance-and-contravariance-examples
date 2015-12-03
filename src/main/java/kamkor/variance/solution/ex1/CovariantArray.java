@@ -28,11 +28,11 @@ public class CovariantArray {
 			exception.printStackTrace();
 		}
 
-//		Arrays in Java are unfortunately covariant. Covariant type parameter can't be safely used as method argument type.
+//		Arrays in Java are unfortunately covariant. Covariant type parameter can't be safely used as method argument type (input type).
 //		arr[0] can be seen as arr.set(0, "iamstring");
 //
 //	    ArrayStoreException is thrown at runtime, because arr is actually an instance of type Integer[], so you can't supply it
-//		with object of type String.
+//		with an object of type String.
 
 // 		Take a look at similar example, but this time using java.util.List
 		final List<Integer> intsList = new ArrayList<>();
@@ -44,7 +44,7 @@ public class CovariantArray {
 //		when we add variance using use-site annotations, then we can use covariant subtyping:
 		final List<? extends Object> objectsList = intsList;
 
-//		however, because it is not safe to use covariant type parameter as method argument type, Java compiler will
+//		however, because it is not safe to use covariant type parameter as method argument type (input type), Java compiler will
 // 		prevent you from using setter/consumer methods of List.
 //		objectsList.add("iamstring");
 //		objectsList.add((Object)"iamstring");
@@ -60,6 +60,6 @@ public class CovariantArray {
 
 //		To summarize, Arrays in java are covariant which is bad, because it leads to runtime errors. But when you use covariance
 //		in Java using use-site annotations for generics, Compiler will keep you safe. So now you have an idea, why compiler
-//		adds all those restrictions for legal positions of covariant and contravariant type parameter in Scala.
+//		adds all those restrictions for allowed positions of covariant and contravariant type parameter in Scala.
 	}
 }
